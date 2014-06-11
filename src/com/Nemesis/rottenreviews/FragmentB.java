@@ -13,6 +13,7 @@ public class FragmentB extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_b, container , false);
+
 	}
 
 	
@@ -23,12 +24,14 @@ public class FragmentB extends Fragment {
 	}
 
 	public void changeText(MovieDetail selection){
+		MovieDetail select = selection;
+
 		text1 = (TextView) getActivity().findViewById(R.id.textView1);
 		text2 = (TextView) getActivity().findViewById(R.id.textView2);
 		text3 = (TextView) getActivity().findViewById(R.id.textView3);
 
-		text1.setText(selection.getTitle());
-		text2.setText(selection.getRating());
-		text3.setText(selection.getSynopsis());
+		text1.setText(select.getTitle());
+		text2.setText(select.getRating());
+		text3.setText(select.getSynopsis());
 	}
 }
