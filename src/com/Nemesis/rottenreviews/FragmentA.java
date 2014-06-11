@@ -22,7 +22,7 @@ public class FragmentA extends Fragment {
 
 	ListView listView;
 	Communicator communicator;
-	private static String url ="http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?limit=5&country=us&apikey=tyes5qr3nrapyss8rfuwqfpv";
+	private static String url ="http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?limit=50&country=us&apikey=tyes5qr3nrapyss8rfuwqfpv";
 	private static final String TAG_MOVIES = "movies";
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_MPAA_RATING = "mpaa_rating";
@@ -43,6 +43,7 @@ public class FragmentA extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		
 		new MovieListDL().execute();
 		//test case
 		/*for(int k=0;k<10;k++){
@@ -51,7 +52,8 @@ public class FragmentA extends Fragment {
 			move.setRating(Integer.toString(k));
 			move.setSynopsis(TAG_SYNOPSIS);
 			movieList.add(move);
-		}*/
+		}*/}
+		public void fillList(){
 		listView = (ListView) getActivity().findViewById(R.id.listView);
 		//creates a list to show titles of movies
 		ArrayList<String> titles = new ArrayList<String>();
@@ -121,6 +123,7 @@ class MovieListDL extends AsyncTask<Void, Void, Void>{
 		@Override
 		protected void onPostExecute(Void result){
 			createList();
+			fillList();
 			
 		}
     	
