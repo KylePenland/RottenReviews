@@ -22,7 +22,7 @@ public class FragmentA extends Fragment {
 
 	ListView listView;
 	Communicator communicator;
-	private static String url ="http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?limit=50&country=us&apikey=tyes5qr3nrapyss8rfuwqfpv";
+	private static String url ="http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?limit=5&country=us&apikey=tyes5qr3nrapyss8rfuwqfpv";
 	private static final String TAG_MOVIES = "movies";
 	private static final String TAG_TITLE = "title";
 	private static final String TAG_MPAA_RATING = "mpaa_rating";
@@ -43,14 +43,14 @@ public class FragmentA extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		//new MovieListDL().execute();
-		for(int k=0;k<10;k++){
+		new MovieListDL().execute();
+		/*for(int k=0;k<10;k++){
 			MovieDetail move = new MovieDetail();
 			move.setTitle("title"+k);
 			move.setRating(Integer.toString(k));
 			move.setSynopsis(TAG_SYNOPSIS);
 			movieList.add(move);
-		}
+		}*/
 		listView = (ListView) getActivity().findViewById(R.id.listView);
 		
 		final ArrayList<String> titles = new ArrayList<String>();
@@ -88,7 +88,11 @@ public class FragmentA extends Fragment {
     			MovieDetail move = new MovieDetail();
     			move.setTitle(pete.getString(TAG_TITLE));
     			move.setRating(pete.getString(TAG_MPAA_RATING));
+    			if(pete.getString(TAG_SYNOPSIS).length() >= 500){
     			move.setSynopsis(pete.getString(TAG_SYNOPSIS).substring(0, 500));
+    			}else{
+    				move.setSynopsis(pete.getString(TAG_SYNOPSIS));
+    			}
     			movieList.add(move);
     			
     		}
@@ -110,6 +114,7 @@ class MovieListDL extends AsyncTask<Void, Void, Void>{
 		@Override
 		protected void onPostExecute(Void result){
 			createList();
+			
 		}
     	
     }
