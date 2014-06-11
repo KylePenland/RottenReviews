@@ -12,9 +12,9 @@ public class SingleItem extends Activity{
 		
 		Bundle inte = getIntent().getExtras();
 		MovieDetail pos = inte.getParcelable("position");
-		FragmentB web = (FragmentB) getFragmentManager().findFragmentById(R.id.fragment2);
-		if (web != null)
-		web.changeText(pos);
+		FragmentB detail = (FragmentB) getFragmentManager().findFragmentById(R.id.fragment2);
+		if (detail != null)
+		detail.changeText(pos);
 		
 	}
 }
