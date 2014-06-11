@@ -44,6 +44,7 @@ public class FragmentA extends Fragment {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 		new MovieListDL().execute();
+		//test case
 		/*for(int k=0;k<10;k++){
 			MovieDetail move = new MovieDetail();
 			move.setTitle("title"+k);
@@ -52,7 +53,7 @@ public class FragmentA extends Fragment {
 			movieList.add(move);
 		}*/
 		listView = (ListView) getActivity().findViewById(R.id.listView);
-		
+		//creates a list to show titles of movies
 		ArrayList<String> titles = new ArrayList<String>();
 	   for(int i = 0; i<movieList.size();i++){
 		   titles.add(movieList.get(i).getTitle());
@@ -65,6 +66,7 @@ public class FragmentA extends Fragment {
  			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long id) {
+ 				//when an item is clicked will show the movietitle,  rating and synopsis
 				communicator.changeText(movieList.get(position));
 			}
 		});
@@ -79,6 +81,9 @@ public class FragmentA extends Fragment {
 	public interface Communicator {
 		public void changeText(MovieDetail itemSelect);
 	}
+	/*
+	 * creates a list of moviedetail objects from the json array
+	 */
 	private void createList(){
     	
     	try{
@@ -105,6 +110,8 @@ class MovieListDL extends AsyncTask<Void, Void, Void>{
     	
 		@Override
 		protected Void doInBackground(Void... params) {
+			//will grab the movie details from the internet
+			//and drop jsonarray into an object
 			parser = new JSONParser();
 			film = parser.getJSONFromUrl(url);
 		

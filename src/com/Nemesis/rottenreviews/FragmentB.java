@@ -22,7 +22,10 @@ public class FragmentB extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 	
 	}
-
+	/*
+	 * 
+	 * this method changes the textviews on fragmentb layout
+	 */
 	public void changeText(MovieDetail selection){
 		MovieDetail select = selection;
 
