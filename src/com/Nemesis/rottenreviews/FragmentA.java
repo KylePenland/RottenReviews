@@ -31,7 +31,7 @@ public class FragmentA extends Fragment {
 	private JSONArray movies = null;
 	private JSONObject film;
 	private JSONParser parser;
-	private ArrayList<MovieDetail> movieList = new ArrayList<MovieDetail>();
+	ArrayList<MovieDetail> movieList = new ArrayList<MovieDetail>();
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,7 +53,7 @@ public class FragmentA extends Fragment {
 		}*/
 		listView = (ListView) getActivity().findViewById(R.id.listView);
 		
-		final ArrayList<String> titles = new ArrayList<String>();
+		ArrayList<String> titles = new ArrayList<String>();
 	   for(int i = 0; i<movieList.size();i++){
 		   titles.add(movieList.get(i).getTitle());
 	   }

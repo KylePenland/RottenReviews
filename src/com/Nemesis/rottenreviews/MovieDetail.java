@@ -10,6 +10,7 @@ public class MovieDetail implements Parcelable{
 	String synopsis;
 	
 	public String getTitle() {
+		
 		return title;
 	}
 

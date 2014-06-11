@@ -33,5 +33,6 @@ public class FragmentB extends Fragment {
 		text1.setText(select.getTitle());
 		text2.setText(select.getRating());
 		text3.setText(select.getSynopsis());
+		
 	}
 }

@@ -25,6 +25,7 @@ public class MainActivity extends Activity implements FragmentA.Communicator {
 
 	@Override
 	public void changeText(MovieDetail  selectItem) {
+		
 		fragmentB = (FragmentB) manager.findFragmentById(R.id.fragment2);
 		MovieDetail hal = selectItem;
 		if(fragmentB != null){
