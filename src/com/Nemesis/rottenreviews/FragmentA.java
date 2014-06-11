@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,7 +33,7 @@ public class FragmentA extends Fragment {
 	private JSONObject film;
 	private JSONParser parser;
 	ArrayList<MovieDetail> movieList = new ArrayList<MovieDetail>();
-	
+	private ProgressDialog pd;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class FragmentA extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		
+		showLoadingDialog();
 		new MovieListDL().execute();
 		//test case
 		/*for(int k=0;k<10;k++){
@@ -74,7 +75,17 @@ public class FragmentA extends Fragment {
 		});
 	}
 	
-	
+		private void showLoadingDialog()
+		{
+			pd = new ProgressDialog(this.getActivity());
+			pd.setTitle("Getting Movies...");
+			pd.setMessage("Please wait.");
+			pd.setCancelable(false);
+			pd.setIndeterminate(true);
+			pd.show();
+			
+			
+		}
 	
 	public void setCommunicator(Communicator comm) {
 		this.communicator = comm;
@@ -122,6 +133,7 @@ class MovieListDL extends AsyncTask<Void, Void, Void>{
 		
 		@Override
 		protected void onPostExecute(Void result){
+			pd.dismiss();
 			createList();
 			fillList();
 			
